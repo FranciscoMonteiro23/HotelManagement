@@ -1,0 +1,284 @@
+@page
+@using HotelManagement.Models
+@model HotelManagement.Pages.Reservas.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalhes da Reserva";
+}
+
+<h1><i class="fas fa-info-circle me-2"></i>Detalhes da Reserva</h1>
+
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Informações da Reserva</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">ID da Reserva</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-dark fs-5">#@Model.Reserva.ReservaID</span>
+            </dd>
+
+            <dt class="col-sm-3">Data Check-in</dt>
+            <dd class="col-sm-9">
+                <i class="fas fa-calendar-check me-2 text-success"></i>
+                @Model.Reserva.DataCheckIn.ToString("dd/MM/yyyy")
+            </dd>
+
+            <dt class="col-sm-3">Data Check-out</dt>
+            <dd class="col-sm-9">
+                <i class="fas fa-calendar-times me-2 text-danger"></i>
+                @Model.Reserva.DataCheckOut.ToString("dd/MM/yyyy")
+            </dd>
+
+            <dt class="col-sm-3">Número de Noites</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-info fs-6">
+                    <i class="fas fa-moon me-1"></i>@Model.Reserva.NumeroNoites noites
+                </span>
+            </dd>
+
+            <dt class="col-sm-3">Número de Hóspedes</dt>
+            <dd class="col-sm-9">
+                <i class="fas fa-users me-2"></i>@Model.Reserva.NumeroHospedes pessoas
+            </dd>
+
+            <dt class="col-sm-3">Valor Total</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-success fs-4">
+                    <i class="fas fa-euro-sign me-1"></i>@Model.Reserva.ValorTotal.ToString("N2") €
+                </span>
+            </dd>
+
+            <dt class="col-sm-3">Status da Reserva</dt>
+            <dd class="col-sm-9">
+                @switch (Model.Reserva.Status)
+                {
+                    case StatusReserva.Confirmada:
+                        <span class="badge bg-success fs-6">
+                            <i class="fas fa-check-circle me-1"></i>Confirmada
+                        </span>
+                        break;
+                    case StatusReserva.Pendente:
+                        <span class="badge bg-warning fs-6">
+                            <i class="fas fa-clock me-1"></i>Pendente
+                        </span>
+                        break;
+                    case StatusReserva.Cancelada:
+                        <span class="badge bg-danger fs-6">
+                            <i class="fas fa-times-circle me-1"></i>Cancelada
+                        </span>
+                        break;
+                    case StatusReserva.CheckInRealizado:
+                        <span class="badge bg-info fs-6">
+                            <i class="fas fa-door-open me-1"></i>Check-in Realizado
+                        </span>
+                        break;
+                    case StatusReserva.CheckOutRealizado:
+                        <span class="badge bg-secondary fs-6">
+                            <i class="fas fa-door-closed me-1"></i>Check-out Realizado
+                        </span>
+                        break;
+                }
+            </dd>
+
+            <dt class="col-sm-3">Data da Reserva</dt>
+            <dd class="col-sm-9">
+                <i class="fas fa-calendar-plus me-2"></i>
+                @Model.Reserva.DataReserva.ToString("dd/MM/yyyy HH:mm")
+            </dd>
+
+            @if (!string.IsNullOrEmpty(Model.Reserva.Observacoes))
+            {
+                <dt class="col-sm-3">Observações</dt>
+                <dd class="col-sm-9">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>@Model.Reserva.Observacoes
+                    </div>
+                </dd>
+            }
+        </dl>
+    </div>
+</div>
+
+<!-- INFORMAÇÕES DO CLIENTE -->
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0"><i class="fas fa-user me-2"></i>Informações do Cliente</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Nome Completo</dt>
+            <dd class="col-sm-9">
+                <h5 class="text-primary">
+                    <i class="fas fa-id-card me-2"></i>@Model.Reserva.Cliente.NomeCompleto
+                </h5>
+            </dd>
+
+            <dt class="col-sm-3">Documento/NIF</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-secondary">@Model.Reserva.Cliente.Documento</span>
+            </dd>
+
+            <dt class="col-sm-3">Telefone</dt>
+            <dd class="col-sm-9">
+                <a href="tel:@Model.Reserva.Cliente.Telefone" class="text-decoration-none">
+                    <i class="fas fa-phone me-2 text-success"></i>@Model.Reserva.Cliente.Telefone
+                </a>
+            </dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">
+                <a href="mailto:@Model.Reserva.Cliente.Email" class="text-decoration-none">
+                    <i class="fas fa-envelope me-2 text-primary"></i>@Model.Reserva.Cliente.Email
+                </a>
+            </dd>
+
+            <dt class="col-sm-3">Cliente desde</dt>
+            <dd class="col-sm-9">
+                <i class="fas fa-calendar me-2"></i>
+                @Model.Reserva.Cliente.DataCadastro.ToString("dd/MM/yyyy")
+            </dd>
+        </dl>
+
+        <div class="text-end">
+            <a asp-page="/Clientes/Details" asp-route-id="@Model.Reserva.Cliente.ClienteID"
+                class="btn btn-sm btn-outline-info">
+                <i class="fas fa-eye me-2"></i>Ver Perfil Completo
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- INFORMAÇÕES DO QUARTO -->
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-success text-white">
+        <h4 class="mb-0"><i class="fas fa-bed me-2"></i>Informações do Quarto</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Número do Quarto</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-dark fs-3">
+                    <i class="fas fa-door-closed me-1"></i>@Model.Reserva.Quarto.QuartoID
+                </span>
+            </dd>
+
+            <dt class="col-sm-3">Tipo de Quarto</dt>
+            <dd class="col-sm-9">
+                <h5 class="text-success">
+                    <i class="fas fa-star me-2"></i>@Model.Reserva.Quarto.TipoQuarto
+                </h5>
+            </dd>
+
+            <dt class="col-sm-3">Capacidade</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-info">
+                    <i class="fas fa-users me-1"></i>Até @Model.Reserva.Quarto.Capacidade pessoas
+                </span>
+            </dd>
+
+            <dt class="col-sm-3">Preço por Noite</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-success fs-5">
+                    <i class="fas fa-euro-sign me-1"></i>@Model.Reserva.Quarto.PrecoPorNoite.ToString("N2") € / noite
+                </span>
+            </dd>
+
+            <dt class="col-sm-3">Status Atual do Quarto</dt>
+            <dd class="col-sm-9">
+                @switch (Model.Reserva.Quarto.Status)
+                {
+                    case StatusQuarto.Disponivel:
+                        <span class="badge bg-success fs-6">
+                            <i class="fas fa-check-circle me-1"></i>Disponível
+                        </span>
+                        break;
+                    case StatusQuarto.Ocupado:
+                        <span class="badge bg-danger fs-6">
+                            <i class="fas fa-user-check me-1"></i>Ocupado
+                        </span>
+                        break;
+                    case StatusQuarto.Manutencao:
+                        <span class="badge bg-warning fs-6">
+                            <i class="fas fa-tools me-1"></i>Em Manutenção
+                        </span>
+                        break;
+                    case StatusQuarto.Limpeza:
+                        <span class="badge bg-info fs-6">
+                            <i class="fas fa-broom me-1"></i>Em Limpeza
+                        </span>
+                        break;
+                }
+            </dd>
+
+            @if (!string.IsNullOrEmpty(Model.Reserva.Quarto.Descricao))
+            {
+                <dt class="col-sm-3">Descrição</dt>
+                <dd class="col-sm-9">
+                    <div class="alert alert-light border">
+                        <i class="fas fa-info-circle me-2"></i>@Model.Reserva.Quarto.Descricao
+                    </div>
+                </dd>
+            }
+        </dl>
+
+        <div class="text-end">
+            <a asp-page="/Quartos/Details" asp-route-id="@Model.Reserva.Quarto.QuartoID"
+                class="btn btn-sm btn-outline-success">
+                <i class="fas fa-eye me-2"></i>Ver Detalhes do Quarto
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- RESUMO FINANCEIRO -->
+<div class="card shadow-sm border-0 mb-4 bg-light">
+    <div class="card-header bg-warning">
+        <h4 class="mb-0"><i class="fas fa-calculator me-2"></i>Resumo Financeiro</h4>
+    </div>
+    <div class="card-body">
+        <div class="row text-center">
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-moon fa-2x text-info mb-2"></i>
+                        <h5>@Model.Reserva.NumeroNoites</h5>
+                        <p class="text-muted mb-0">Noites</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <i class="fas fa-euro-sign fa-2x text-success mb-2"></i>
+                        <h5>@Model.Reserva.Quarto.PrecoPorNoite.ToString("N2") €</h5>
+                        <p class="text-muted mb-0">Por Noite</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card border-0 shadow-sm bg-success text-white">
+                    <div class="card-body">
+                        <i class="fas fa-wallet fa-2x mb-2"></i>
+                        <h5>@Model.Reserva.ValorTotal.ToString("N2") €</h5>
+                        <p class="mb-0">Valor Total</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BOTÕES DE AÇÃO -->
+<div class="d-flex gap-2 mb-4">
+    <a asp-page="./Edit" asp-route-id="@Model.Reserva.ReservaID" class="btn btn-warning">
+        <i class="fas fa-edit me-2"></i>Editar Reserva
+    </a>
+    <a asp-page="./Delete" asp-route-id="@Model.Reserva.ReservaID" class="btn btn-danger">
+        <i class="fas fa-trash me-2"></i>Apagar Reserva
+    </a>
+    <a asp-page="./Index" class="btn btn-secondary ms-auto">
+        <i class="fas fa-arrow-left me-2"></i>Voltar à Lista
+    </a>
+</div>

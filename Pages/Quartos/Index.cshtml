@@ -1,0 +1,214 @@
+@page
+@using HotelManagement.Models
+@model HotelManagement.Pages.Quartos.IndexModel
+
+@{
+    ViewData["Title"] = "Quartos";
+}
+
+<h1><i class="fas fa-bed me-2"></i>Quartos</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">
+        <i class="fas fa-plus-circle me-2"></i>Novo Quarto
+    </a>
+</p>
+
+<!-- FILTRO DE PESQUISA COM STATUS -->
+<form asp-page="./Index" method="get" class="mb-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="row align-items-end">
+                <div class="col-md-5">
+                    <label class="form-label">
+                        <i class="fas fa-search me-2"></i>Procurar por número, tipo ou descrição:
+                    </label>
+                    <input type="text" name="FiltroTexto" value="@Model.FiltroCorrente" class="form-control"
+                        placeholder="Digite para pesquisar..." />
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">
+                        <i class="fas fa-filter me-2"></i>Filtrar por Status:
+                    </label>
+                    <select name="statusFiltro" class="form-select" asp-items="Model.StatusList">
+                        <option value="">-- Todos os Status --</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fas fa-search me-2"></i>Filtrar
+                    </button>
+                    <a asp-page="./Index" class="btn btn-secondary w-100 mt-2">
+                        <i class="fas fa-redo me-2"></i>Limpar Filtros
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- BOTÕES DE FILTRO RÁPIDO POR STATUS -->
+<div class="mb-3 d-flex flex-wrap gap-2">
+    <a asp-page="./Index" asp-route-statusFiltro="Disponivel" class="btn btn-outline-success btn-sm">
+        <i class="fas fa-check-circle me-1"></i>Disponíveis
+    </a>
+    <a asp-page="./Index" asp-route-statusFiltro="Ocupado" class="btn btn-outline-danger btn-sm">
+        <i class="fas fa-user-check me-1"></i>Ocupados
+    </a>
+    <a asp-page="./Index" asp-route-statusFiltro="Manutencao" class="btn btn-outline-warning btn-sm">
+        <i class="fas fa-tools me-1"></i>Em Manutenção
+    </a>
+    <a asp-page="./Index" asp-route-statusFiltro="Limpeza" class="btn btn-outline-info btn-sm">
+        <i class="fas fa-broom me-1"></i>Em Limpeza
+    </a>
+</div>
+
+<!-- TABELA DE QUARTOS -->
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>
+                            <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoNumero"
+                                asp-route-filtroCorrente="@Model.FiltroCorrente"
+                                asp-route-statusFiltro="@Model.StatusCorrente"
+                                asp-route-indexPagina="@Model.Quartos.PaginaIndex" class="text-decoration-none">
+                                <i class="fas fa-door-closed me-1"></i>Número
+                                @if (Model.OrdenacaoNumero == "numero_desc")
+                                {
+                                    <i class="fas fa-sort-up"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-sort-down"></i>
+                                }
+                            </a>
+                        </th>
+                        <th>
+                            <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoTipo"
+                                asp-route-filtroCorrente="@Model.FiltroCorrente"
+                                asp-route-statusFiltro="@Model.StatusCorrente"
+                                asp-route-indexPagina="@Model.Quartos.PaginaIndex" class="text-decoration-none">
+                                <i class="fas fa-tag me-1"></i>Tipo
+                                @if (Model.OrdenacaoTipo == "tipo_desc")
+                                {
+                                    <i class="fas fa-sort-up"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-sort-down"></i>
+                                }
+                            </a>
+                        </th>
+                        <th><i class="fas fa-users me-1"></i>Capacidade</th>
+                        <th>
+                            <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoPreco"
+                                asp-route-filtroCorrente="@Model.FiltroCorrente"
+                                asp-route-statusFiltro="@Model.StatusCorrente"
+                                asp-route-indexPagina="@Model.Quartos.PaginaIndex" class="text-decoration-none">
+                                <i class="fas fa-euro-sign me-1"></i>Preço/Noite
+                                @if (Model.OrdenacaoPreco == "preco_desc")
+                                {
+                                    <i class="fas fa-sort-up"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-sort-down"></i>
+                                }
+                            </a>
+                        </th>
+                        <th><i class="fas fa-info-circle me-1"></i>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Quartos)
+                    {
+                        <tr>
+                            <td>
+                                <span class="badge bg-dark fs-6">@item.QuartoID</span>
+                            </td>
+                            <td>
+                                <strong>@item.TipoQuarto</strong>
+                            </td>
+                            <td>
+                                <i class="fas fa-user me-1"></i>@item.Capacidade
+                            </td>
+                            <td>
+                                <span class="badge bg-success">@item.PrecoPorNoite.ToString("C")</span>
+                            </td>
+                            <td>
+                                @switch (item.Status)
+                                {
+                                    case StatusQuarto.Disponivel:
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check-circle me-1"></i>Disponível
+                                        </span>
+                                        break;
+                                    case StatusQuarto.Ocupado:
+                                        <span class="badge bg-danger">
+                                            <i class="fas fa-user-check me-1"></i>Ocupado
+                                        </span>
+                                        break;
+                                    case StatusQuarto.Manutencao:
+                                        <span class="badge bg-warning">
+                                            <i class="fas fa-tools me-1"></i>Manutenção
+                                        </span>
+                                        break;
+                                    case StatusQuarto.Limpeza:
+                                        <span class="badge bg-info">
+                                            <i class="fas fa-broom me-1"></i>Limpeza
+                                        </span>
+                                        break;
+                                }
+                            </td>
+                            <td>
+                                <a asp-page="./Edit" asp-route-id="@item.QuartoID" class="btn btn-sm btn-warning"
+                                    title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-page="./Details" asp-route-id="@item.QuartoID" class="btn btn-sm btn-info"
+                                    title="Detalhes">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a asp-page="./Delete" asp-route-id="@item.QuartoID" class="btn btn-sm btn-danger"
+                                    title="Apagar">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- PAGINAÇÃO -->
+@{
+    var prevDisabled = !Model.Quartos.HaPaginasAntes ? "disabled" : "";
+    var nextDisabled = !Model.Quartos.HaPaginasDepois ? "disabled" : "";
+}
+
+<div class="d-flex justify-content-between align-items-center mt-3">
+    <div>
+        <span class="text-muted">
+            <i class="fas fa-info-circle me-2"></i>
+            Página @Model.Quartos.PaginaIndex de @Model.Quartos.TotalPaginas
+        </span>
+    </div>
+    <div>
+        <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoCorrente"
+            asp-route-indexPagina="@(Model.Quartos.PaginaIndex - 1)" asp-route-filtroCorrente="@Model.FiltroCorrente"
+            asp-route-statusFiltro="@Model.StatusCorrente" class="btn btn-primary @prevDisabled">
+            <i class="fas fa-chevron-left me-2"></i>Anterior
+        </a>
+        <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoCorrente"
+            asp-route-indexPagina="@(Model.Quartos.PaginaIndex + 1)" asp-route-filtroCorrente="@Model.FiltroCorrente"
+            asp-route-statusFiltro="@Model.StatusCorrente" class="btn btn-primary @nextDisabled">
+            Próximo<i class="fas fa-chevron-right ms-2"></i>
+        </a>
+    </div>
+</div>

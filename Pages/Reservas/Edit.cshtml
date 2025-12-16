@@ -1,0 +1,84 @@
+@page
+@model HotelManagement.Pages_Reservas.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Reserva</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Reserva.ReservaID" />
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reserva.QuartoID" class="control-label"></label>
+                <select asp-for="Reserva.QuartoID" class="form-control" asp-items="ViewBag.QuartoID"
+                    aria-required="true"></select>
+                <span asp-validation-for="Reserva.QuartoID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reserva.ClienteID" class="control-label"></label>
+                <select asp-for="Reserva.ClienteID" class="form-control" asp-items="ViewBag.ClienteID"
+                    aria-required="true"></select>
+                <span asp-validation-for="Reserva.ClienteID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reserva.DataCheckIn" class="control-label"></label>
+                <input asp-for="Reserva.DataCheckIn" class="form-control" aria-required="true" />
+                <span asp-validation-for="Reserva.DataCheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reserva.DataCheckOut" class="control-label"></label>
+                <input asp-for="Reserva.DataCheckOut" class="form-control" aria-required="true" />
+                <span asp-validation-for="Reserva.DataCheckOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reserva.NumeroHospedes" class="control-label"></label>
+                <input asp-for="Reserva.NumeroHospedes" class="form-control" />
+                <span asp-validation-for="Reserva.NumeroHospedes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reserva.ValorTotal" class="control-label"></label>
+                <input asp-for="Reserva.ValorTotal" class="form-control" />
+                <span asp-validation-for="Reserva.ValorTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Reserva.Status" class="control-label"></label>
+                <select asp-for="Reserva.Status" class="form-control" aria-required="true"></select>
+                <span asp-validation-for="Reserva.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reserva.Observacoes" class="control-label"></label>
+                <input asp-for="Reserva.Observacoes" class="form-control" />
+                <span asp-validation-for="Reserva.Observacoes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reserva.DataReserva" class="control-label"></label>
+                <input asp-for="Reserva.DataReserva" class="form-control" />
+                <span asp-validation-for="Reserva.DataReserva" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

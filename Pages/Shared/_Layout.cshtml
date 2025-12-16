@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hotel Management System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" asp-area="" asp-page="/Index">
+                    <i class="fas fa-hotel me-2"></i>
+                    <span class="fw-bold">Hotel Management</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Index">
+                                <i class="fas fa-home me-1"></i>Início
+                            </a>
+                        </li>
+
+                        <!-- RESERVAS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-calendar-check me-1"></i>Reservas
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/Reservas/Index">
+                                        <i class="fas fa-list me-2"></i>Ver Reservas
+                                    </a></li>
+                                <li><a class="dropdown-item" asp-page="/Reservas/Create">
+                                        <i class="fas fa-plus-circle me-2"></i>Nova Reserva
+                                    </a></li>
+                            </ul>
+                        </li>
+
+                        <!-- QUARTOS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bed me-1"></i>Quartos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/Quartos/Index">
+                                        <i class="fas fa-list me-2"></i>Ver Quartos
+                                    </a></li>
+                                <li><a class="dropdown-item" asp-page="/Quartos/Create">
+                                        <i class="fas fa-plus-circle me-2"></i>Novo Quarto
+                                    </a></li>
+                            </ul>
+                        </li>
+
+                        <!-- CLIENTES -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-users me-1"></i>Clientes
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/Clientes/Index">
+                                        <i class="fas fa-list me-2"></i>Ver Clientes
+                                    </a></li>
+                                <li><a class="dropdown-item" asp-page="/Clientes/Create">
+                                        <i class="fas fa-user-plus me-2"></i>Novo Cliente
+                                    </a></li>
+                            </ul>
+                        </li>
+
+                        <!-- FUNCIONÁRIOS -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-tie me-1"></i>Funcionários
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/Funcionarios/Index">
+                                        <i class="fas fa-list me-2"></i>Ver Funcionários
+                                    </a></li>
+                                <li><a class="dropdown-item" asp-page="/Funcionarios/Create">
+                                        <i class="fas fa-user-plus me-2"></i>Novo Funcionário
+                                    </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" asp-page="/Setores/Index">
+                                        <i class="fas fa-building me-2"></i>Setores
+                                    </a></li>
+                            </ul>
+                        </li>
+
+                        <!-- RELATÓRIOS -->
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/Relatorios">
+                                <i class="fas fa-chart-bar me-1"></i>Relatórios
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- LOGIN/LOGOUT -->
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-light mt-5">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-hotel me-2"></i>Hotel Management</h5>
+                    <p class="small">Sistema completo de gestão hoteleira</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Links Rápidos</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="/Reservas/Index" class="text-decoration-none">Reservas</a></li>
+                        <li><a href="/Quartos/Index" class="text-decoration-none">Quartos</a></li>
+                        <li><a href="/Clientes/Index" class="text-decoration-none">Clientes</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Contacto</h6>
+                    <p class="small">
+                        <i class="fas fa-phone me-2"></i>+351 123 456 789<br>
+                        <i class="fas fa-envelope me-2"></i>info@hotel.com
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center small">
+                <strong>&copy; 2025 Francisco Monteiro</strong> - Hotel Management System
+                <br>
+                <span class="text-muted">Todos os direitos reservados</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

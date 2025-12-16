@@ -1,0 +1,210 @@
+﻿@page
+@model IndexModel
+@{@using HotelManagement.Models   <!-- Adiciona isto -->
+    ViewData["Title"] = "Página Inicial";
+}
+    <div class="text-center mb-4">
+    <img src="~/img/img.png" alt="Hotel Logo" style="height:120px;">
+</div>
+
+<!-- HERO SECTION -->
+<div class="hero-section text-white text-center py-5 mb-5"
+    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px;">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-3">
+            <i class="fas fa-hotel me-3"></i>Bem-vindo ao Hotel Management
+        </h1>
+        <p class="lead mb-4">Sistema completo de gestão hoteleira - Gerencie reservas, quartos, clientes e funcionários
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="/Reservas/Create" class="btn btn-light btn-lg">
+                <i class="fas fa-calendar-plus me-2"></i>Nova Reserva
+            </a>
+            <a href="/Quartos/Index" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-bed me-2"></i>Ver Quartos
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ESTATÍSTICAS -->
+<div class="row mb-5">
+    <div class="col-md-3 mb-3">
+        <div class="card text-center shadow-sm h-100 border-0"
+            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="card-body text-white">
+                <i class="fas fa-calendar-check fa-3x mb-3"></i>
+                <h3 class="fw-bold">@Model.TotalReservas</h3>
+                <p class="mb-0">Reservas Ativas</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-center shadow-sm h-100 border-0"
+            style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <div class="card-body text-white">
+                <i class="fas fa-bed fa-3x mb-3"></i>
+                <h3 class="fw-bold">@Model.TotalQuartos</h3>
+                <p class="mb-0">Quartos Totais</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-center shadow-sm h-100 border-0"
+            style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <div class="card-body text-white">
+                <i class="fas fa-users fa-3x mb-3"></i>
+                <h3 class="fw-bold">@Model.TotalClientes</h3>
+                <p class="mb-0">Clientes</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card text-center shadow-sm h-100 border-0"
+            style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+            <div class="card-body text-white">
+                <i class="fas fa-user-tie fa-3x mb-3"></i>
+                <h3 class="fw-bold">@Model.TotalFuncionarios</h3>
+                <p class="mb-0">Funcionários</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FUNCIONALIDADES PRINCIPAIS -->
+<div class="row mb-5">
+    <div class="col-12 mb-4">
+        <h2 class="text-center mb-4">
+            <i class="fas fa-star me-2"></i>Funcionalidades Principais
+        </h2>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                    style="width: 80px; height: 80px;">
+                    <i class="fas fa-calendar-alt fa-2x"></i>
+                </div>
+                <h5 class="card-title fw-bold">Gestão de Reservas</h5>
+                <p class="card-text">Controle completo de reservas com check-in, check-out e histórico</p>
+                <a href="/Reservas/Index" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-right me-2"></i>Acessar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                    style="width: 80px; height: 80px;">
+                    <i class="fas fa-door-open fa-2x"></i>
+                </div>
+                <h5 class="card-title fw-bold">Controle de Quartos</h5>
+                <p class="card-text">Gerencie quartos, preços, disponibilidade e manutenção</p>
+                <a href="/Quartos/Index" class="btn btn-outline-success">
+                    <i class="fas fa-arrow-right me-2"></i>Acessar
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body text-center">
+                <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                    style="width: 80px; height: 80px;">
+                    <i class="fas fa-chart-line fa-2x"></i>
+                </div>
+                <h5 class="card-title fw-bold">Relatórios</h5>
+                <p class="card-text">Análises detalhadas de ocupação e desempenho do hotel</p>
+                <a href="/Relatorios" class="btn btn-outline-info">
+                    <i class="fas fa-arrow-right me-2"></i>Acessar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ÚLTIMAS RESERVAS -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <h2 class="text-center mb-4">
+            <i class="fas fa-clock me-2"></i>Últimas Reservas
+        </h2>
+    </div>
+
+    <div class="col-12">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                @if (Model.UltimasReservas != null && Model.UltimasReservas.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th><i class="fas fa-user me-2"></i>Cliente</th>
+                                    <th><i class="fas fa-bed me-2"></i>Quarto</th>
+                                    <th><i class="fas fa-calendar me-2"></i>Check-in</th>
+                                    <th><i class="fas fa-calendar me-2"></i>Check-out</th>
+                                    <th><i class="fas fa-info-circle me-2"></i>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var reserva in Model.UltimasReservas)
+                                {
+                                    <tr>
+                                        <td>@reserva.Cliente.NomeCompleto</td>
+                                        <td>Quarto @reserva.Quarto.QuartoID - @reserva.Quarto.TipoQuarto</td>
+                                        <td>@reserva.DataCheckIn.ToString("dd/MM/yyyy")</td>
+                                        <td>@reserva.DataCheckOut.ToString("dd/MM/yyyy")</td>
+                                        <td>
+                                            @if (reserva.Status == StatusReserva.Confirmada)
+                                            {
+                                                <span class="badge bg-success">@reserva.Status</span>
+                                            }
+                                            else if (reserva.Status == StatusReserva.Pendente)
+                                            {
+                                                <span class="badge bg-warning">@reserva.Status</span>
+                                            }
+                                            else if (reserva.Status == StatusReserva.Cancelada)
+                                            {
+                                                <span class="badge bg-danger">@reserva.Status</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-info">@reserva.Status</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a href="/Reservas/Details?id=@reserva.ReservaID"
+                                                class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-5 text-muted">
+                        <i class="fas fa-inbox fa-3x mb-3"></i>
+                        <p>Nenhuma reserva encontrada</p>
+                        <a href="/Reservas/Create" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>Criar primeira reserva
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

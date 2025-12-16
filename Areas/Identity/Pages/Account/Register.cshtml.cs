@@ -1,0 +1,74 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
+
+namespace HotelManagement.Areas.Identity.Pages.Account
+{
+    public class RegisterModel : PageModel
+    {
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public RegisterModel(
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+
+        [BindProperty]
+        public InputModel Input { get; set; }
+
+        public string ReturnUrl { get; set; }
+
+        public class InputModel
+        {
+            [Required(ErrorMessage = "O email é obrigatório")]
+            [EmailAddress(ErrorMessage = "Email inválido")]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
+
+            [Required(ErrorMessage = "A password é obrigatória")]
+            [StringLength(100, ErrorMessage = "A {0} deve ter pelo menos {2} caracteres.", MinimumLength = 3)]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string Password { get; set; }
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Confirmar password")]
+            [Compare("Password", ErrorMessage = "As passwords não coincidem.")]
+            public string ConfirmPassword { get; set; }
+        }
+
+        public void OnGet(string returnUrl = null)
+        {
+            ReturnUrl = returnUrl;
+        }
+
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        {
+            returnUrl ??= Url.Content("~/");
+
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var result = await _userManager.CreateAsync(user, Input.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            return Page();
+        }
+    }
+}

@@ -1,0 +1,103 @@
+@page
+@using HotelManagement.Models
+@model HotelManagement.Pages.Quartos.CreateModel
+
+@{
+    ViewData["Title"] = "Novo Quarto";
+}
+
+<h1><i class="fas fa-bed me-2"></i>Novo Quarto</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <!-- INFORMAÇÕES BÁSICAS -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Informações Básicas</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Quarto.QuartoID" class="form-label"></label>
+                            <input asp-for="Quarto.QuartoID" class="form-control" type="number"
+                                placeholder="Ex: 101, 201, 301" />
+                            <span asp-validation-for="Quarto.QuartoID" class="text-danger"></span>
+                            <small class="text-muted">Digite o número do quarto</small>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Quarto.TipoQuarto" class="form-label"></label>
+                            <input asp-for="Quarto.TipoQuarto" class="form-control"
+                                placeholder="Ex: Single, Double, Suite" />
+                            <span asp-validation-for="Quarto.TipoQuarto" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Quarto.Capacidade" class="form-label"></label>
+                            <input asp-for="Quarto.Capacidade" class="form-control" type="number" min="1" max="10"
+                                placeholder="Número de pessoas" />
+                            <span asp-validation-for="Quarto.Capacidade" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Quarto.PrecoPorNoite" class="form-label"></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-euro-sign"></i></span>
+                                <input asp-for="Quarto.PrecoPorNoite" class="form-control" type="number" step="0.01"
+                                    placeholder="0.00" />
+                            </div>
+                            <span asp-validation-for="Quarto.PrecoPorNoite" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATUS E DESCRIÇÃO -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-cog me-2"></i>Status e Descrição</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label asp-for="Quarto.Status" class="form-label"></label>
+                        <select asp-for="Quarto.Status" class="form-select"
+                            asp-items="Html.GetEnumSelectList<StatusQuarto>()">
+                            <option value="">-- Selecione o Status --</option>
+                        </select>
+                        <span asp-validation-for="Quarto.Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Quarto.Descricao" class="form-label"></label>
+                        <textarea asp-for="Quarto.Descricao" class="form-control" rows="4"
+                            placeholder="Descreva as características do quarto (comodidades, vista, etc.)"></textarea>
+                        <span asp-validation-for="Quarto.Descricao" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="form-group d-flex gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fas fa-save me-2"></i>Criar Quarto
+                </button>
+                <a asp-page="Index" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-times me-2"></i>Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

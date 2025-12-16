@@ -1,0 +1,83 @@
+@page
+@model HotelManagement.Pages.Clientes.EditModel
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<h1><i class="fas fa-user-edit me-2"></i>Editar Cliente</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Cliente.ClienteID" />
+
+            <!-- DADOS PESSOAIS -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-user me-2"></i>Dados Pessoais</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Cliente.Nome" class="form-label"></label>
+                            <input asp-for="Cliente.Nome" class="form-control" />
+                            <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Cliente.Apelido" class="form-label"></label>
+                            <input asp-for="Cliente.Apelido" class="form-control" />
+                            <span asp-validation-for="Cliente.Apelido" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Cliente.Documento" class="form-label"></label>
+                            <input asp-for="Cliente.Documento" class="form-control" />
+                            <span asp-validation-for="Cliente.Documento" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Cliente.Telefone" class="form-label"></label>
+                            <input asp-for="Cliente.Telefone" class="form-control" />
+                            <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Cliente.Email" class="form-label"></label>
+                        <input asp-for="Cliente.Email" class="form-control" type="email" />
+                        <span asp-validation-for="Cliente.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Cliente.DataCadastro" class="form-label"></label>
+                        <input asp-for="Cliente.DataCadastro" class="form-control" type="date" />
+                        <span asp-validation-for="Cliente.DataCadastro" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="form-group d-flex gap-2">
+                <button type="submit" class="btn btn-warning btn-lg">
+                    <i class="fas fa-save me-2"></i>Guardar Alterações
+                </button>
+                <a asp-page="Index" class="btn btn-secondary btn-lg">
+                    <i class="fas fa-times me-2"></i>Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

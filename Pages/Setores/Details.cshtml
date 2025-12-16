@@ -1,0 +1,186 @@
+@page
+@using HotelManagement.Models
+@model HotelManagement.Pages.Setores.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalhes do Setor";
+}
+
+<h1><i class="fas fa-building me-2"></i>Detalhes do Setor</h1>
+
+<!-- INFORMAÇÕES DO SETOR -->
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-primary text-white">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="mb-0"><i class="fas fa-building me-2"></i>Informações do Setor</h4>
+            <span class="badge bg-light text-dark fs-5">ID: @Model.Setor.SetorID</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Nome do Setor</dt>
+            <dd class="col-sm-9">
+                <h3 class="text-primary">
+                    <i class="fas fa-building me-2"></i>@Model.Setor.NomeSetor
+                </h3>
+            </dd>
+
+            <dt class="col-sm-3">Descrição</dt>
+            <dd class="col-sm-9">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>@Model.Setor.Descricao
+                </div>
+            </dd>
+
+            <dt class="col-sm-3">Número de Funcionários</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-success fs-4">
+                    <i class="fas fa-users me-2"></i>@Model.Setor.NumeroFuncionarios funcionários
+                </span>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<!-- ESTATÍSTICAS -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm border-0 bg-primary text-white">
+            <div class="card-body">
+                <i class="fas fa-users fa-3x mb-3"></i>
+                <h3 class="fw-bold">@(Model.Setor.AtribuicaoSetores?.Count ?? 0)</h3>
+                <p class="mb-0">Funcionários Atribuídos</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm border-0 bg-success text-white">
+            <div class="card-body">
+                <i class="fas fa-building fa-3x mb-3"></i>
+                <h3 class="fw-bold">@Model.Setor.SetorID</h3>
+                <p class="mb-0">ID do Setor</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm border-0 bg-info text-white">
+            <div class="card-body">
+                <i class="fas fa-chart-line fa-3x mb-3"></i>
+                <h3 class="fw-bold">@Model.Setor.NumeroFuncionarios</h3>
+                <p class="mb-0">Capacidade</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FUNCIONÁRIOS NESTE SETOR -->
+@if (Model.Setor.AtribuicaoSetores != null && Model.Setor.AtribuicaoSetores.Any())
+{
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0"><i class="fas fa-user-tie me-2"></i>Funcionários neste Setor</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th><i class="fas fa-user me-1"></i>Nome</th>
+                            <th><i class="fas fa-id-card me-1"></i>Documento</th>
+                            <th><i class="fas fa-briefcase me-1"></i>Cargo</th>
+                            <th><i class="fas fa-phone me-1"></i>Telefone</th>
+                            <th><i class="fas fa-calendar me-1"></i>Data Contratação</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var atribuicao in Model.Setor.AtribuicaoSetores)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@atribuicao.Funcionario.NomeCompleto</strong>
+                                </td>
+                                <td>
+                                    <span class="badge bg-secondary">@atribuicao.Funcionario.Documento</span>
+                                </td>
+                                <td>
+                                    @switch (atribuicao.Funcionario.Cargo)
+                                    {
+                                        case CargoFuncionario.Recepcionista:
+                                            <span class="badge bg-info">
+                                                <i class="fas fa-concierge-bell me-1"></i>Recepcionista
+                                            </span>
+                                            break;
+                                        case CargoFuncionario.Camareira:
+                                            <span class="badge bg-success">
+                                                <i class="fas fa-broom me-1"></i>Camareira
+                                            </span>
+                                            break;
+                                        case CargoFuncionario.Gerente:
+                                            <span class="badge bg-danger">
+                                                <i class="fas fa-user-shield me-1"></i>Gerente
+                                            </span>
+                                            break;
+                                        case CargoFuncionario.Manutencao:
+                                            <span class="badge bg-warning">
+                                                <i class="fas fa-tools me-1"></i>Manutenção
+                                            </span>
+                                            break;
+                                        case CargoFuncionario.Seguranca:
+                                            <span class="badge bg-dark">
+                                                <i class="fas fa-shield-alt me-1"></i>Segurança
+                                            </span>
+                                            break;
+                                        case CargoFuncionario.Chef:
+                                            <span class="badge bg-primary">
+                                                <i class="fas fa-utensils me-1"></i>Chef
+                                            </span>
+                                            break;
+                                    }
+                                </td>
+                                <td>
+                                    <i class="fas fa-phone me-1"></i>@atribuicao.Funcionario.Telefone
+                                </td>
+                                <td>
+                                    <i class="fas fa-calendar-check me-1"></i>
+                                    @atribuicao.Funcionario.DataContratacao.ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    <a asp-page="/Funcionarios/Details" asp-route-id="@atribuicao.Funcionario.FuncionarioID"
+                                        class="btn btn-sm btn-info">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        Este setor ainda não possui funcionários atribuídos.
+    </div>
+}
+
+<!-- BOTÕES DE AÇÃO -->
+<div class="d-flex gap-2 mb-4">
+    <a asp-page="./Edit" asp-route-id="@Model.Setor.SetorID" class="btn btn-warning">
+        <i class="fas fa-edit me-2"></i>Editar Setor
+    </a>
+    <a asp-page="/Funcionarios/Create" class="btn btn-success">
+        <i class="fas fa-user-plus me-2"></i>Adicionar Funcionário ao Setor
+    </a>
+    <a asp-page="./Delete" asp-route-id="@Model.Setor.SetorID" class="btn btn-danger">
+        <i class="fas fa-trash me-2"></i>Apagar Setor
+    </a>
+    <a asp-page="./Index" class="btn btn-secondary ms-auto">
+        <i class="fas fa-arrow-left me-2"></i>Voltar à Lista
+    </a>
+</div>

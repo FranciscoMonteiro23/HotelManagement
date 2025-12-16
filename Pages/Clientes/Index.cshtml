@@ -1,0 +1,99 @@
+@page
+@model HotelManagement.Pages.Clientes.IndexModel
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1><i class="fas fa-users me-2"></i>Clientes</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">
+        <i class="fas fa-user-plus me-2"></i>Novo Cliente
+    </a>
+</p>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clientes[0].Apelido)
+                        </th>
+                        <th>
+                            <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoNome"
+                                class="text-decoration-none">
+                                @Html.DisplayNameFor(model => model.Clientes[0].Nome)
+                                @if (Model.OrdenacaoNome == "nome_desc")
+                                {
+                                    <i class="fas fa-sort-up"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-sort-down"></i>
+                                }
+                            </a>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clientes[0].Documento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clientes[0].Telefone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Clientes[0].Email)
+                        </th>
+                        <th>
+                            <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoData"
+                                class="text-decoration-none">
+                                @Html.DisplayNameFor(model => model.Clientes[0].DataCadastro)
+                                @if (Model.OrdenacaoData == "data_desc")
+                                {
+                                    <i class="fas fa-sort-up"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-sort-down"></i>
+                                }
+                            </a>
+                        </th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Clientes)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Apelido)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Documento)</td>
+                            <td>
+                                <i class="fas fa-phone me-1"></i>@Html.DisplayFor(modelItem => item.Telefone)
+                            </td>
+                            <td>
+                                <i class="fas fa-envelope me-1"></i>@Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>@item.DataCadastro.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                <a asp-page="./Edit" asp-route-id="@item.ClienteID" class="btn btn-sm btn-warning"
+                                    title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-page="./Details" asp-route-id="@item.ClienteID" class="btn btn-sm btn-info"
+                                    title="Detalhes">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a asp-page="./Delete" asp-route-id="@item.ClienteID" class="btn btn-sm btn-danger"
+                                    title="Apagar">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

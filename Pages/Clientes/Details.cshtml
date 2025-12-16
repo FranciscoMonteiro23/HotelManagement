@@ -1,0 +1,201 @@
+@page
+@using HotelManagement.Models
+@model HotelManagement.Pages.Clientes.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalhes do Cliente";
+}
+
+<h1><i class="fas fa-user me-2"></i>Detalhes do Cliente</h1>
+
+<!-- INFORMAÇÕES DO CLIENTE -->
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0"><i class="fas fa-id-card me-2"></i>Informações Pessoais</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Nome Completo</dt>
+            <dd class="col-sm-9">
+                <h4 class="text-primary">
+                    <i class="fas fa-user-circle me-2"></i>@Model.Cliente.NomeCompleto
+                </h4>
+            </dd>
+
+            <dt class="col-sm-3">Nome</dt>
+            <dd class="col-sm-9"><strong>@Model.Cliente.Nome</strong></dd>
+
+            <dt class="col-sm-3">Apelido</dt>
+            <dd class="col-sm-9"><strong>@Model.Cliente.Apelido</strong></dd>
+
+            <dt class="col-sm-3">Documento/NIF</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-secondary fs-6">@Model.Cliente.Documento</span>
+            </dd>
+
+            <dt class="col-sm-3">Telefone</dt>
+            <dd class="col-sm-9">
+                <a href="tel:@Model.Cliente.Telefone" class="text-decoration-none">
+                    <i class="fas fa-phone me-2 text-success"></i>@Model.Cliente.Telefone
+                </a>
+            </dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">
+                <a href="mailto:@Model.Cliente.Email" class="text-decoration-none">
+                    <i class="fas fa-envelope me-2 text-primary"></i>@Model.Cliente.Email
+                </a>
+            </dd>
+
+            <dt class="col-sm-3">Cliente desde</dt>
+            <dd class="col-sm-9">
+                <i class="fas fa-calendar me-2"></i>
+                @Model.Cliente.DataCadastro.ToString("dd/MM/yyyy")
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<!-- ESTATÍSTICAS DO CLIENTE -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm border-0 bg-info text-white">
+            <div class="card-body">
+                <i class="fas fa-calendar-check fa-3x mb-3"></i>
+                <h3 class="fw-bold">@(Model.Cliente.Reservas?.Count ?? 0)</h3>
+                <p class="mb-0">Total de Reservas</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm border-0 bg-success text-white">
+            <div class="card-body">
+                <i class="fas fa-euro-sign fa-3x mb-3"></i>
+                <h3 class="fw-bold">
+                    @((Model.Cliente.Reservas?.Sum(r => r.ValorTotal) ?? 0).ToString("N2")) €
+                </h3>
+                <p class="mb-0">Valor Total Gasto</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-center shadow-sm border-0 bg-warning text-dark">
+            <div class="card-body">
+                <i class="fas fa-moon fa-3x mb-3"></i>
+                <h3 class="fw-bold">@(Model.Cliente.Reservas?.Sum(r => r.NumeroNoites) ?? 0)</h3>
+                <p class="mb-0">Total de Noites</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HISTÓRICO DE RESERVAS -->
+@if (Model.Cliente.Reservas != null && Model.Cliente.Reservas.Any())
+{
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0"><i class="fas fa-history me-2"></i>Histórico de Reservas</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th><i class="fas fa-hashtag me-1"></i>ID</th>
+                            <th><i class="fas fa-door-closed me-1"></i>Quarto</th>
+                            <th><i class="fas fa-calendar me-1"></i>Check-in</th>
+                            <th><i class="fas fa-calendar me-1"></i>Check-out</th>
+                            <th><i class="fas fa-moon me-1"></i>Noites</th>
+                            <th><i class="fas fa-euro-sign me-1"></i>Valor</th>
+                            <th><i class="fas fa-info-circle me-1"></i>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var reserva in Model.Cliente.Reservas.OrderByDescending(r => r.DataCheckIn))
+                        {
+                            <tr>
+                                <td><span class="badge bg-secondary">#@reserva.ReservaID</span></td>
+                                <td>
+                                    <span class="badge bg-dark">@reserva.Quarto.QuartoID</span>
+                                    <small class="text-muted">- @reserva.Quarto.TipoQuarto</small>
+                                </td>
+                                <td>
+                                    <i class="fas fa-calendar-check me-1 text-success"></i>
+                                    @reserva.DataCheckIn.ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    <i class="fas fa-calendar-times me-1 text-danger"></i>
+                                    @reserva.DataCheckOut.ToString("dd/MM/yyyy")
+                                </td>
+                                <td><span class="badge bg-info">@reserva.NumeroNoites</span></td>
+                                <td><span class="badge bg-success">@reserva.ValorTotal.ToString("C")</span></td>
+                                <td>
+                                    @switch (reserva.Status)
+                                    {
+                                        case StatusReserva.Confirmada:
+                                            <span class="badge bg-success">
+                                                <i class="fas fa-check-circle me-1"></i>Confirmada
+                                            </span>
+                                            break;
+                                        case StatusReserva.Pendente:
+                                            <span class="badge bg-warning">
+                                                <i class="fas fa-clock me-1"></i>Pendente
+                                            </span>
+                                            break;
+                                        case StatusReserva.Cancelada:
+                                            <span class="badge bg-danger">
+                                                <i class="fas fa-times-circle me-1"></i>Cancelada
+                                            </span>
+                                            break;
+                                        case StatusReserva.CheckInRealizado:
+                                            <span class="badge bg-info">
+                                                <i class="fas fa-door-open me-1"></i>Check-in
+                                            </span>
+                                            break;
+                                        case StatusReserva.CheckOutRealizado:
+                                            <span class="badge bg-secondary">
+                                                <i class="fas fa-door-closed me-1"></i>Check-out
+                                            </span>
+                                            break;
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-page="/Reservas/Details" asp-route-id="@reserva.ReservaID"
+                                        class="btn btn-sm btn-info">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle me-2"></i>
+        Este cliente ainda não possui reservas registadas.
+    </div>
+}
+
+<!-- BOTÕES DE AÇÃO -->
+<div class="d-flex gap-2 mb-4">
+    <a asp-page="./Edit" asp-route-id="@Model.Cliente.ClienteID" class="btn btn-warning">
+        <i class="fas fa-edit me-2"></i>Editar Cliente
+    </a>
+    <a asp-page="/Reservas/Create" class="btn btn-success">
+        <i class="fas fa-calendar-plus me-2"></i>Nova Reserva para este Cliente
+    </a>
+    <a asp-page="./Delete" asp-route-id="@Model.Cliente.ClienteID" class="btn btn-danger">
+        <i class="fas fa-trash me-2"></i>Apagar Cliente
+    </a>
+    <a asp-page="./Index" class="btn btn-secondary ms-auto">
+        <i class="fas fa-arrow-left me-2"></i>Voltar à Lista
+    </a>
+</div>

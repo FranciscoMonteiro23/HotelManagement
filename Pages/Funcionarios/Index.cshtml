@@ -1,0 +1,171 @@
+@page "{id:int?}"
+@using HotelManagement.Models
+@model HotelManagement.Pages.Funcionarios.IndexModel
+
+@{
+    ViewData["Title"] = "Funcionários";
+}
+
+<h1><i class="fas fa-user-tie me-2"></i>Funcionários</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">
+        <i class="fas fa-user-plus me-2"></i>Novo Funcionário
+    </a>
+</p>
+
+<!-- TABELA DE FUNCIONÁRIOS -->
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0"><i class="fas fa-users me-2"></i>Lista de Funcionários</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th><i class="fas fa-user me-1"></i>Nome</th>
+                        <th><i class="fas fa-user me-1"></i>Apelido</th>
+                        <th><i class="fas fa-id-card me-1"></i>Documento</th>
+                        <th><i class="fas fa-briefcase me-1"></i>Cargo</th>
+                        <th><i class="fas fa-calendar me-1"></i>Data Contratação</th>
+                        <th><i class="fas fa-building me-1"></i>Setores</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Funcionario.Funcionarios)
+                    {
+                        string linhaSelecionada = "";
+                        if (item.FuncionarioID == Model.FuncionarioID)
+                        {
+                            linhaSelecionada = "table-success";
+                        }
+                        <tr class="@linhaSelecionada">
+                            <td><strong>@item.Nome</strong></td>
+                            <td>@item.Apelido</td>
+                            <td>
+                                <span class="badge bg-secondary">@item.Documento</span>
+                            </td>
+                            <td>
+                                @switch (item.Cargo)
+                                {
+                                    case CargoFuncionario.Recepcionista:
+                                        <span class="badge bg-info">
+                                            <i class="fas fa-concierge-bell me-1"></i>Recepcionista
+                                        </span>
+                                        break;
+                                    case CargoFuncionario.Camareira:
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-broom me-1"></i>Camareira
+                                        </span>
+                                        break;
+                                    case CargoFuncionario.Gerente:
+                                        <span class="badge bg-danger">
+                                            <i class="fas fa-user-shield me-1"></i>Gerente
+                                        </span>
+                                        break;
+                                    case CargoFuncionario.Manutencao:
+                                        <span class="badge bg-warning">
+                                            <i class="fas fa-tools me-1"></i>Manutenção
+                                        </span>
+                                        break;
+                                    case CargoFuncionario.Seguranca:
+                                        <span class="badge bg-dark">
+                                            <i class="fas fa-shield-alt me-1"></i>Segurança
+                                        </span>
+                                        break;
+                                    case CargoFuncionario.Chef:
+                                        <span class="badge bg-primary">
+                                            <i class="fas fa-utensils me-1"></i>Chef
+                                        </span>
+                                        break;
+                                }
+                            </td>
+                            <td>
+                                <i class="fas fa-calendar-check me-1"></i>
+                                @item.DataContratacao.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                @if (item.AtribuicaoSetores != null && item.AtribuicaoSetores.Any())
+                                {
+                                    foreach (var atribuicao in item.AtribuicaoSetores)
+                                    {
+                                        <span class="badge bg-info me-1">
+                                            @atribuicao.Setor.NomeSetor
+                                        </span>
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="text-muted"><i>Sem setores</i></span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-page="./Index" asp-route-id="@item.FuncionarioID" class="btn btn-sm btn-primary"
+                                    title="Selecionar">
+                                    <i class="fas fa-hand-pointer"></i>
+                                </a>
+                                <a asp-page="./Edit" asp-route-id="@item.FuncionarioID" class="btn btn-sm btn-warning"
+                                    title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-page="./Details" asp-route-id="@item.FuncionarioID" class="btn btn-sm btn-info"
+                                    title="Detalhes">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a asp-page="./Delete" asp-route-id="@item.FuncionarioID" class="btn btn-sm btn-danger"
+                                    title="Apagar">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- SETORES DO FUNCIONÁRIO SELECIONADO -->
+@if (Model.Funcionario.Setores != null && Model.Funcionario.Setores.Any())
+{
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">
+                <i class="fas fa-building me-2"></i>Setores do Funcionário Selecionado
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th><i class="fas fa-hashtag me-1"></i>ID</th>
+                            <th><i class="fas fa-building me-1"></i>Nome do Setor</th>
+                            <th><i class="fas fa-info-circle me-1"></i>Descrição</th>
+                            <th><i class="fas fa-users me-1"></i>Nº Funcionários</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var setor in Model.Funcionario.Setores)
+                        {
+                            <tr>
+                                <td>
+                                    <span class="badge bg-dark">@setor.SetorID</span>
+                                </td>
+                                <td>
+                                    <strong>@setor.NomeSetor</strong>
+                                </td>
+                                <td>@setor.Descricao</td>
+                                <td>
+                                    <span class="badge bg-info">@setor.NumeroFuncionarios</span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,193 @@
+@page
+@model HotelManagement.Pages.RelatoriosModel
+@{
+    ViewData["Title"] = "Relatórios";
+}
+
+<div class="container">
+    <h1 class="mb-4">
+        <i class="fas fa-chart-bar me-2"></i>Relatórios e Estatísticas
+    </h1>
+
+    <!-- OCUPAÇÃO -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-bed me-2"></i>Taxa de Ocupação</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <h2 class="text-primary">@Model.TaxaOcupacao%</h2>
+                            <p class="text-muted">Taxa Atual</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h2 class="text-success">@Model.QuartosDisponiveis</h2>
+                            <p class="text-muted">Quartos Disponíveis</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h2 class="text-danger">@Model.QuartosOcupados</h2>
+                            <p class="text-muted">Quartos Ocupados</p>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <h2 class="text-warning">@Model.TotalQuartos</h2>
+                            <p class="text-muted">Total de Quartos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESERVAS POR STATUS -->
+    <div class="row mb-4">
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="fas fa-calendar-check me-2"></i>Reservas por Status</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fas fa-circle text-success me-2"></i>Confirmadas</span>
+                            <strong>@Model.ReservasConfirmadas</strong>
+                        </div>
+                        <div class="progress" style="height: 25px;">
+                            <div class="progress-bar bg-success" role="progressbar"
+                                style="width: @Model.PercentagemConfirmadas%">
+                                @Model.PercentagemConfirmadas%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fas fa-circle text-warning me-2"></i>Pendentes</span>
+                            <strong>@Model.ReservasPendentes</strong>
+                        </div>
+                        <div class="progress" style="height: 25px;">
+                            <div class="progress-bar bg-warning" role="progressbar"
+                                style="width: @Model.PercentagemPendentes%">
+                                @Model.PercentagemPendentes%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span><i class="fas fa-circle text-info me-2"></i>Check-in Realizado</span>
+                            <strong>@Model.ReservasCheckIn</strong>
+                        </div>
+                        <div class="progress" style="height: 25px;">
+                            <div class="progress-bar bg-info" role="progressbar"
+                                style="width: @Model.PercentagemCheckIn%">
+                                @Model.PercentagemCheckIn%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RECEITA -->
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-euro-sign me-2"></i>Receita</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h2 class="display-4 text-info">@Model.ReceitaTotal.ToString("C")</h2>
+                        <p class="text-muted">Receita Total</p>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Receita Confirmada:</span>
+                        <strong class="text-success">@Model.ReceitaConfirmada.ToString("C")</strong>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Receita Pendente:</span>
+                        <strong class="text-warning">@Model.ReceitaPendente.ToString("C")</strong>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <span>Ticket Médio:</span>
+                        <strong class="text-primary">@Model.TicketMedio.ToString("C")</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP CLIENTES -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-trophy me-2"></i>Top 5 Clientes</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.TopClientes != null && Model.TopClientes.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Posição</th>
+                                        <th>Cliente</th>
+                                        <th>Email</th>
+                                        <th>Nº Reservas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int posicao = 1;
+                                    }
+                                    @foreach (var cliente in Model.TopClientes)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @if (posicao == 1)
+                                                {
+                                                    <i class="fas fa-medal text-warning fa-2x"></i>
+                                                }
+                                                else if (posicao == 2)
+                                                {
+                                                    <i class="fas fa-medal text-secondary fa-2x"></i>
+                                                }
+                                                else if (posicao == 3)
+                                                {
+                                                    <i class="fas fa-medal text-bronze fa-2x" style="color: #CD7F32;"></i>
+                                                }
+                                                else
+                                                {
+                                                    <span class="fw-bold">@posicao</span>
+                                                }
+                                            </td>
+                                            <td>@cliente.NomeCompleto</td>
+                                            <td>@cliente.Email</td>
+                                            <td>
+                                                <span class="badge bg-primary">@cliente.Reservas.Count reservas</span>
+                                            </td>
+                                        </tr>
+
+                                        posicao++;
+                                    }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-center text-muted">Nenhum cliente encontrado</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
