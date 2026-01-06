@@ -66,14 +66,5 @@ HotelManagement/
 **Francisco Monteiro**
 - GitHub: [@FranciscoMonteiro23](https://github.com/FranciscoMonteiro23)
 
-## 📄 Licença
 
-Este projeto está sob a licença MIT.
 
-## 🤝 Contribuições
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
-
----
-
-⭐ Se este projeto foi útil, deixe uma estrela!
