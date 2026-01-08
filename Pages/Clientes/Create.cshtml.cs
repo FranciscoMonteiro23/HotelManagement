@@ -31,6 +31,9 @@ namespace HotelManagement.Pages.Clientes
                 return Page();
             }
 
+            // Preencher automaticamente a data de cadastro
+            Cliente.DataCadastro = DateTime.Now;
+
             _context.Cliente.Add(Cliente);
             await _context.SaveChangesAsync();
 

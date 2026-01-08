@@ -970,3 +970,4 @@ C:\Users\Francisco Monteiro\Desktop\HotelManagement\obj\Debug\net10.0\refint\Hot
 C:\Users\Francisco Monteiro\Desktop\HotelManagement\obj\Debug\net10.0\HotelManagement.pdb
 C:\Users\Francisco Monteiro\Desktop\HotelManagement\obj\Debug\net10.0\HotelManagement.genruntimeconfig.cache
 C:\Users\Francisco Monteiro\Desktop\HotelManagement\obj\Debug\net10.0\ref\HotelManagement.dll
+C:\Users\Francisco Monteiro\Desktop\HotelManagement\obj\Debug\net10.0\HotelManagement.sourcelink.json
