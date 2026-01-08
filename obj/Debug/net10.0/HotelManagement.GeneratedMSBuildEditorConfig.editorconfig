@@ -19,181 +19,181 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = HotelManagement
 build_property.RootNamespace = HotelManagement
-build_property.ProjectDir = C:\Users\Francisco Monteiro\Desktop\HotelManagement\
+build_property.ProjectDir = /Users/franciscomonteiromonteiro/Desktop/HotelManagement/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Francisco Monteiro\Desktop\HotelManagement
+build_property.MSBuildProjectDirectory = /Users/franciscomonteiromonteiro/Desktop/HotelManagement
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxJbmRleC5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfTG9naW5QYXJ0aWFsLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9fTG9naW5QYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld1N0YXJ0LmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Areas/Identity/Pages/Account/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9fVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Areas/Identity/Pages/_viewimports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX3ZpZXdpbXBvcnRzLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Areas/Identity/Pages/_viewimports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX3ZpZXdpbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Clientes/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZXNcQ3JlYXRlLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Clientes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Clientes/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZXNcRGVsZXRlLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Clientes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Clientes/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZXNcRGV0YWlscy5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Clientes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Clientes/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZXNcRWRpdC5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Clientes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Clientes/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpZW50ZXNcSW5kZXguY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Clientes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50ZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Funcionarios/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9zXENyZWF0ZS5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Funcionarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnVuY2lvbmFyaW9zL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Funcionarios/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9zXERlbGV0ZS5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Funcionarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnVuY2lvbmFyaW9zL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Funcionarios/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9zXERldGFpbHMuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Funcionarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnVuY2lvbmFyaW9zL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Funcionarios/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9zXEVkaXQuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Funcionarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnVuY2lvbmFyaW9zL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Funcionarios/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9zXEluZGV4LmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Funcionarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRnVuY2lvbmFyaW9zL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Quartos/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVhcnRvc1xDcmVhdGUuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Quartos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVhcnRvcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Quartos/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVhcnRvc1xEZWxldGUuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Quartos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVhcnRvcy9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Quartos/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVhcnRvc1xEZXRhaWxzLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Quartos/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVhcnRvcy9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Quartos/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVhcnRvc1xFZGl0LmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Quartos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVhcnRvcy9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Quartos/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVhcnRvc1xJbmRleC5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Quartos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVhcnRvcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Relatorios/relatorios.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVsYXRvcmlvc1xyZWxhdG9yaW9zLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Relatorios/relatorios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVsYXRvcmlvcy9yZWxhdG9yaW9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Reservas/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YXNcQ3JlYXRlLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Reservas/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXJ2YXMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Reservas/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YXNcRGVsZXRlLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Reservas/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXJ2YXMvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Reservas/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YXNcRGV0YWlscy5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Reservas/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXJ2YXMvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Reservas/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YXNcRWRpdC5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Reservas/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXJ2YXMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Reservas/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzZXJ2YXNcSW5kZXguY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Reservas/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVzZXJ2YXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Setores/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0b3Jlc1xDcmVhdGUuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Setores/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2V0b3Jlcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Setores/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0b3Jlc1xEZWxldGUuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Setores/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2V0b3Jlcy9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Setores/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0b3Jlc1xEZXRhaWxzLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Setores/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2V0b3Jlcy9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Setores/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0b3Jlc1xFZGl0LmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Setores/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2V0b3Jlcy9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Setores/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2V0b3Jlc1xJbmRleC5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Setores/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2V0b3Jlcy9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Shared/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Francisco Monteiro/Desktop/HotelManagement/Pages/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-kdxrd0cjkt
+[/Users/franciscomonteiromonteiro/Desktop/HotelManagement/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-h5mtstzco6

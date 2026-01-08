@@ -25,7 +25,7 @@
                         <div class="col-md-6 mb-3">
                             <label asp-for="Quarto.QuartoID" class="form-label"></label>
                             <input asp-for="Quarto.QuartoID" class="form-control" type="number"
-                                placeholder="Ex: 101, 201, 301" />
+                                placeholder="Ex: 101, 201, 301" required />
                             <span asp-validation-for="Quarto.QuartoID" class="text-danger"></span>
                             <small class="text-muted">Digite o número do quarto</small>
                         </div>
@@ -33,7 +33,7 @@
                         <div class="col-md-6 mb-3">
                             <label asp-for="Quarto.TipoQuarto" class="form-label"></label>
                             <input asp-for="Quarto.TipoQuarto" class="form-control"
-                                placeholder="Ex: Single, Double, Suite" />
+                                placeholder="Ex: Single, Double, Suite" required />
                             <span asp-validation-for="Quarto.TipoQuarto" class="text-danger"></span>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         <div class="col-md-6 mb-3">
                             <label asp-for="Quarto.Capacidade" class="form-label"></label>
                             <input asp-for="Quarto.Capacidade" class="form-control" type="number" min="1" max="10"
-                                placeholder="Número de pessoas" />
+                                placeholder="Número de pessoas" required />
                             <span asp-validation-for="Quarto.Capacidade" class="text-danger"></span>
                         </div>
 
@@ -51,7 +51,7 @@
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-euro-sign"></i></span>
                                 <input asp-for="Quarto.PrecoPorNoite" class="form-control" type="number" step="0.01"
-                                    placeholder="0.00" />
+                                    placeholder="0.00" required />
                             </div>
                             <span asp-validation-for="Quarto.PrecoPorNoite" class="text-danger"></span>
                         </div>
@@ -67,7 +67,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label asp-for="Quarto.Status" class="form-label"></label>
-                        <select asp-for="Quarto.Status" class="form-select"
+                        <select asp-for="Quarto.Status" class="form-select" required
                             asp-items="Html.GetEnumSelectList<StatusQuarto>()">
                             <option value="">-- Selecione o Status --</option>
                         </select>

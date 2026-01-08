@@ -3,202 +3,130 @@
 @model HotelManagement.Pages.Reservas.IndexModel
 
 @{
-    ViewData["Title"] = "Reservas";
+    ViewData["Title"] = "Lista de Reservas";
 }
 
-<h1><i class="fas fa-calendar-alt me-2"></i>Reservas</h1>
-
-<p>
-    <a asp-page="Create" class="btn btn-primary">
-        <i class="fas fa-calendar-plus me-2"></i>Nova Reserva
-    </a>
-</p>
-
-<!-- FILTRO DE PESQUISA COM STATUS -->
-<form asp-page="./Index" method="get" class="mb-4">
-    <div class="card shadow-sm border-0">
-        <div class="card-body">
-            <div class="row align-items-end">
-                <div class="col-md-5">
-                    <label class="form-label">
-                        <i class="fas fa-search me-2"></i>Procurar por cliente, quarto ou tipo:
-                    </label>
-                    <input type="text" name="FiltroTexto" value="@Model.FiltroCorrente" class="form-control"
-                        placeholder="Digite para pesquisar..." />
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label">
-                        <i class="fas fa-filter me-2"></i>Filtrar por Status:
-                    </label>
-                    <select name="statusFiltro" class="form-select" asp-items="Model.StatusList">
-                        <option value="">-- Todos os Status --</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="fas fa-search me-2"></i>Filtrar
-                    </button>
-                    <a asp-page="./Index" class="btn btn-secondary w-100 mt-2">
-                        <i class="fas fa-redo me-2"></i>Limpar Filtros
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-<!-- BOTÕES DE FILTRO RÁPIDO POR STATUS -->
-<div class="mb-3 d-flex flex-wrap gap-2">
-    <a asp-page="./Index" asp-route-statusFiltro="Pendente" class="btn btn-outline-warning btn-sm">
-        <i class="fas fa-clock me-1"></i>Pendentes
-    </a>
-    <a asp-page="./Index" asp-route-statusFiltro="Confirmada" class="btn btn-outline-success btn-sm">
-        <i class="fas fa-check-circle me-1"></i>Confirmadas
-    </a>
-    <a asp-page="./Index" asp-route-statusFiltro="CheckInRealizado" class="btn btn-outline-info btn-sm">
-        <i class="fas fa-door-open me-1"></i>Check-in Realizados
-    </a>
-    <a asp-page="./Index" asp-route-statusFiltro="CheckOutRealizado" class="btn btn-outline-secondary btn-sm">
-        <i class="fas fa-door-closed me-1"></i>Check-out Realizados
-    </a>
-    <a asp-page="./Index" asp-route-statusFiltro="Cancelada" class="btn btn-outline-danger btn-sm">
-        <i class="fas fa-times-circle me-1"></i>Canceladas
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-calendar-alt me-2"></i>Reservas</h1>
+    <a asp-page="Create" class="btn btn-primary btn-lg">
+        <i class="fas fa-plus me-2"></i>Nova Reserva
     </a>
 </div>
 
-<!-- TABELA DE RESERVAS -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i>@TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<hr />
+
 <div class="card shadow-sm border-0">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-hover">
-                <thead class="table-light">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
                     <tr>
-                        <th><i class="fas fa-hashtag me-1"></i>ID</th>
-                        <th>
-                            <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoCliente"
-                                asp-route-filtroCorrente="@Model.FiltroCorrente"
-                                asp-route-statusFiltro="@Model.StatusCorrente"
-                                asp-route-indexPagina="@Model.Reservas.PaginaIndex" class="text-decoration-none">
-                                <i class="fas fa-user me-1"></i>Cliente
-                                @if (Model.OrdenacaoCliente == "cliente_desc")
-                                {
-                                    <i class="fas fa-sort-up"></i>
-                                }
-                                else
-                                {
-                                    <i class="fas fa-sort-down"></i>
-                                }
-                            </a>
-                        </th>
-                        <th><i class="fas fa-door-closed me-1"></i>Quarto</th>
-                        <th>
-                            <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoData"
-                                asp-route-filtroCorrente="@Model.FiltroCorrente"
-                                asp-route-statusFiltro="@Model.StatusCorrente"
-                                asp-route-indexPagina="@Model.Reservas.PaginaIndex" class="text-decoration-none">
-                                <i class="fas fa-calendar me-1"></i>Check-in
-                                @if (Model.OrdenacaoData == "data_desc")
-                                {
-                                    <i class="fas fa-sort-up"></i>
-                                }
-                                else
-                                {
-                                    <i class="fas fa-sort-down"></i>
-                                }
-                            </a>
-                        </th>
-                        <th><i class="fas fa-calendar me-1"></i>Check-out</th>
-                        <th><i class="fas fa-moon me-1"></i>Noites</th>
-                        <th>
-                            <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoValor"
-                                asp-route-filtroCorrente="@Model.FiltroCorrente"
-                                asp-route-statusFiltro="@Model.StatusCorrente"
-                                asp-route-indexPagina="@Model.Reservas.PaginaIndex" class="text-decoration-none">
-                                <i class="fas fa-euro-sign me-1"></i>Valor
-                                @if (Model.OrdenacaoValor == "valor_desc")
-                                {
-                                    <i class="fas fa-sort-up"></i>
-                                }
-                                else
-                                {
-                                    <i class="fas fa-sort-down"></i>
-                                }
-                            </a>
-                        </th>
-                        <th><i class="fas fa-info-circle me-1"></i>Status</th>
-                        <th>Ações</th>
+                        <th>ID</th>
+                        <th>Quarto</th>
+                        <th>Cliente</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Noites</th>
+                        <th>Hóspedes</th>
+                        <th>Valor Total</th>
+                        <th>Status</th>
+                        <th class="text-center">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Reservas)
+                    @if (Model.Reservas != null && Model.Reservas.Any())
+                    {
+                        @foreach (var item in Model.Reservas)
+                        {
+                            <tr>
+                                <td><strong>#@item.ReservaID</strong></td>
+                                <td>
+                                    <i class="fas fa-bed text-primary me-1"></i>
+                                    Quarto @item.QuartoID
+                                </td>
+                                <td>
+                                    <i class="fas fa-user text-info me-1"></i>
+                                    @item.Cliente?.NomeCompleto
+                                </td>
+                                <td>@item.DataCheckIn.ToString("dd/MM/yyyy")</td>
+                                <td>@item.DataCheckOut.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        @item.NumeroNoites noite(s)
+                                    </span>
+                                </td>
+                                <td>
+                                    <i class="fas fa-users text-muted me-1"></i>
+                                    @item.NumeroHospedes
+                                </td>
+                                <td>
+                                    <strong class="text-success">€@item.ValorTotal.ToString("F2")</strong>
+                                </td>
+                                <td>
+                                    @switch (item.Status)
+                                    {
+                                        case StatusReserva.Pendente:
+                                            <span class="badge bg-warning text-dark">
+                                                <i class="fas fa-clock me-1"></i>Pendente
+                                            </span>
+                                            break;
+                                        case StatusReserva.Confirmada:
+                                            <span class="badge bg-info">
+                                                <i class="fas fa-check me-1"></i>Confirmada
+                                            </span>
+                                            break;
+                                        case StatusReserva.CheckInRealizado:
+                                            <span class="badge bg-primary">
+                                                <i class="fas fa-door-open me-1"></i>Check-in
+                                            </span>
+                                            break;
+                                        case StatusReserva.CheckOutRealizado:
+                                            <span class="badge bg-success">
+                                                <i class="fas fa-door-closed me-1"></i>Check-out
+                                            </span>
+                                            break;
+                                        case StatusReserva.Cancelada:
+                                            <span class="badge bg-danger">
+                                                <i class="fas fa-times me-1"></i>Cancelada
+                                            </span>
+                                            break;
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a asp-page="./Details" asp-route-id="@item.ReservaID" 
+                                           class="btn btn-sm btn-outline-info" title="Detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a asp-page="./Edit" asp-route-id="@item.ReservaID" 
+                                           class="btn btn-sm btn-outline-warning" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-page="./Delete" asp-route-id="@item.ReservaID" 
+                                           class="btn btn-sm btn-outline-danger" title="Eliminar">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <td>
-                                <span class="badge bg-secondary">#@item.ReservaID</span>
-                            </td>
-                            <td>
-                                <strong>@item.Cliente.NomeCompleto</strong>
-                            </td>
-                            <td>
-                                <span class="badge bg-dark">@item.Quarto.QuartoID</span>
-                                <small class="text-muted">- @item.Quarto.TipoQuarto</small>
-                            </td>
-                            <td>
-                                <i class="fas fa-calendar-check me-1 text-success"></i>
-                                @item.DataCheckIn.ToString("dd/MM/yyyy")
-                            </td>
-                            <td>
-                                <i class="fas fa-calendar-times me-1 text-danger"></i>
-                                @item.DataCheckOut.ToString("dd/MM/yyyy")
-                            </td>
-                            <td>
-                                <span class="badge bg-info">@item.NumeroNoites</span>
-                            </td>
-                            <td>
-                                <span class="badge bg-success">@item.ValorTotal.ToString("C")</span>
-                            </td>
-                            <td>
-                                @switch (item.Status)
-                                {
-                                    case StatusReserva.Confirmada:
-                                        <span class="badge bg-success">
-                                            <i class="fas fa-check-circle me-1"></i>Confirmada
-                                        </span>
-                                        break;
-                                    case StatusReserva.Pendente:
-                                        <span class="badge bg-warning">
-                                            <i class="fas fa-clock me-1"></i>Pendente
-                                        </span>
-                                        break;
-                                    case StatusReserva.Cancelada:
-                                        <span class="badge bg-danger">
-                                            <i class="fas fa-times-circle me-1"></i>Cancelada
-                                        </span>
-                                        break;
-                                    case StatusReserva.CheckInRealizado:
-                                        <span class="badge bg-info">
-                                            <i class="fas fa-door-open me-1"></i>Check-in
-                                        </span>
-                                        break;
-                                    case StatusReserva.CheckOutRealizado:
-                                        <span class="badge bg-secondary">
-                                            <i class="fas fa-door-closed me-1"></i>Check-out
-                                        </span>
-                                        break;
-                                }
-                            </td>
-                            <td>
-                                <a asp-page="./Edit" asp-route-id="@item.ReservaID" class="btn btn-sm btn-warning"
-                                    title="Editar">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a asp-page="./Details" asp-route-id="@item.ReservaID" class="btn btn-sm btn-info"
-                                    title="Detalhes">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a asp-page="./Delete" asp-route-id="@item.ReservaID" class="btn btn-sm btn-danger"
-                                    title="Apagar">
-                                    <i class="fas fa-trash"></i>
+                            <td colspan="10" class="text-center py-5">
+                                <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                                <p class="text-muted">Nenhuma reserva cadastrada.</p>
+                                <a asp-page="Create" class="btn btn-primary">
+                                    <i class="fas fa-plus me-2"></i>Criar primeira reserva
                                 </a>
                             </td>
                         </tr>
@@ -209,29 +137,47 @@
     </div>
 </div>
 
-<!-- PAGINAÇÃO -->
-@{
-    var prevDisabled = !Model.Reservas.HaPaginasAntes ? "disabled" : "";
-    var nextDisabled = !Model.Reservas.HaPaginasDepois ? "disabled" : "";
-}
-
-<div class="d-flex justify-content-between align-items-center mt-3">
-    <div>
-        <span class="text-muted">
-            <i class="fas fa-info-circle me-2"></i>
-            Página @Model.Reservas.PaginaIndex de @Model.Reservas.TotalPaginas
-        </span>
-    </div>
-    <div>
-        <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoCorrente"
-            asp-route-indexPagina="@(Model.Reservas.PaginaIndex - 1)" asp-route-filtroCorrente="@Model.FiltroCorrente"
-            asp-route-statusFiltro="@Model.StatusCorrente" class="btn btn-primary @prevDisabled">
-            <i class="fas fa-chevron-left me-2"></i>Anterior
-        </a>
-        <a asp-page="./Index" asp-route-ordenacao="@Model.OrdenacaoCorrente"
-            asp-route-indexPagina="@(Model.Reservas.PaginaIndex + 1)" asp-route-filtroCorrente="@Model.FiltroCorrente"
-            asp-route-statusFiltro="@Model.StatusCorrente" class="btn btn-primary @nextDisabled">
-            Próximo<i class="fas fa-chevron-right ms-2"></i>
-        </a>
+<div class="mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card border-0 bg-primary text-white shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-calendar-check me-2"></i>Total Reservas
+                    </h5>
+                    <h2 class="mb-0">@Model.Reservas?.Count()</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 bg-warning text-dark shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-clock me-2"></i>Pendentes
+                    </h5>
+                    <h2 class="mb-0">@Model.Reservas?.Count(r => r.Status == StatusReserva.Pendente)</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 bg-info text-white shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-check me-2"></i>Confirmadas
+                    </h5>
+                    <h2 class="mb-0">@Model.Reservas?.Count(r => r.Status == StatusReserva.Confirmada)</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-0 bg-success text-white shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-euro-sign me-2"></i>Receita Total
+                    </h5>
+                    <h2 class="mb-0">€@Model.Reservas?.Sum(r => r.ValorTotal).ToString("F2")</h2>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

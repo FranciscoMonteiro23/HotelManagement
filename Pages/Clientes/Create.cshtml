@@ -23,13 +23,13 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label asp-for="Cliente.Nome" class="form-label"></label>
-                            <input asp-for="Cliente.Nome" class="form-control" placeholder="Digite o nome" />
+                            <input asp-for="Cliente.Nome" class="form-control" placeholder="Digite o nome" required />
                             <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label asp-for="Cliente.Apelido" class="form-label"></label>
-                            <input asp-for="Cliente.Apelido" class="form-control" placeholder="Digite o apelido" />
+                            <input asp-for="Cliente.Apelido" class="form-control" placeholder="Digite o apelido" required />
                             <span asp-validation-for="Cliente.Apelido" class="text-danger"></span>
                         </div>
                     </div>
@@ -37,13 +37,13 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label asp-for="Cliente.Documento" class="form-label"></label>
-                            <input asp-for="Cliente.Documento" class="form-control" placeholder="Ex: 123456789" />
+                            <input asp-for="Cliente.Documento" class="form-control" placeholder="Ex: 123456789" required />
                             <span asp-validation-for="Cliente.Documento" class="text-danger"></span>
                         </div>
 
                         <div class="col-md-6 mb-3">
                             <label asp-for="Cliente.Telefone" class="form-label"></label>
-                            <input asp-for="Cliente.Telefone" class="form-control" placeholder="Ex: 912345678" />
+                            <input asp-for="Cliente.Telefone" class="form-control" placeholder="Ex: 912345678" required />
                             <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                     <div class="mb-3">
                         <label asp-for="Cliente.Email" class="form-label"></label>
                         <input asp-for="Cliente.Email" class="form-control" type="email"
-                            placeholder="exemplo@email.com" />
+                            placeholder="exemplo@email.com" required />
                         <span asp-validation-for="Cliente.Email" class="text-danger"></span>
                     </div>
                 </div>
