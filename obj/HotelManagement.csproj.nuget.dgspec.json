@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/Users/franciscomonteiromonteiro/Desktop/HotelManagement/HotelManagement.csproj": {}
+    "C:\\Users\\Francisco Monteiro\\HotelManagement\\HotelManagement.csproj": {}
   },
   "projects": {
-    "/Users/franciscomonteiromonteiro/Desktop/HotelManagement/HotelManagement.csproj": {
+    "C:\\Users\\Francisco Monteiro\\HotelManagement\\HotelManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/franciscomonteiromonteiro/Desktop/HotelManagement/HotelManagement.csproj",
+        "projectUniqueName": "C:\\Users\\Francisco Monteiro\\HotelManagement\\HotelManagement.csproj",
         "projectName": "HotelManagement",
-        "projectPath": "/Users/franciscomonteiromonteiro/Desktop/HotelManagement/HotelManagement.csproj",
-        "packagesPath": "/Users/franciscomonteiromonteiro/.nuget/packages/",
-        "outputPath": "/Users/franciscomonteiromonteiro/Desktop/HotelManagement/obj/",
+        "projectPath": "C:\\Users\\Francisco Monteiro\\HotelManagement\\HotelManagement.csproj",
+        "packagesPath": "C:\\Users\\Francisco Monteiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Francisco Monteiro\\HotelManagement\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/franciscomonteiromonteiro/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Francisco Monteiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -100,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
